@@ -1,0 +1,29 @@
+zsh_plugin_load() {
+    [[ -z $PLUGINS_DIR ]] && print "ERROR: ZSH Plugins location not configured" && return
+
+    temp=$1
+
+    # Split the provided argument to get its GIT name and potentially the file that needs
+    # to be sourced
+    splits=(${(s/:/)temp})
+    git_plugin=$splits[1]
+    sourced_file=$splits[2]
+
+    # Split again the GIT name of the plugin to determine its stored directory name
+    splits=(${(@s:/:)git_plugin})
+    plugin=$splits[2]
+    plugin_dir=$PLUGINS_DIR/$plugin
+
+    # Download the plugin in case it doesn't exist
+    if [[ ! -d $plugin_dir ]]; then
+	    print "WARNING: Plugin '$plugin' is missing... Installing it now...\n"
+	    git clone "https://github.com/$git_plugin.git" $plugin_dir
+	    print "\nSUCCESS: Plugin '$plugin' installed\n"
+    fi
+    
+    # Finally, source the default file or the provided one
+    [[ -z $sourced_file ]] && sourced_file=$plugin.zsh
+    
+    source $plugin_dir/$sourced_file
+}
+

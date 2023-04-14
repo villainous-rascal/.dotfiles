@@ -1,0 +1,21 @@
+## Set environment variables
+
+# Set the default EDITOR
+export EDITOR=nvim
+
+# Use bat as the manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Setup exa colors
+#export LS_COLORS="di-32"
+
+# Location of rustup and cargo
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
+# Add above paths to PATH
+PATH=$CARGO_HOME/bin:$PATH
+
+# Finally, export the PATH
+export PATH
+

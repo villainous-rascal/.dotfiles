@@ -1,0 +1,24 @@
+# Setting up the Prompts
+
+# Print an empty line before the Prompt but not when this is the first Prompt
+precmd() {
+    precmd() {
+        echo
+    }
+}
+
+### TODO: Create a custom GIT STATUS ZSH plugin
+
+# PS1
+# check whether the user is logged in via ssh
+psvar=($SSH_TTY)
+
+PS1='%0(V.%F{#fdd800}[SSH]%f%F{#5bc0eb}%n%f%F{#fdd800}@%f%F{#d026ff}%m%f .)%F{#5bc0eb}%75<...<%~%<<%f $GITSTATUS_PROMPT
+%F{#d026ff}%(!.#.$)%f '
+
+# RPS1
+RPS1='%0(?..%B%F{#e55934} [Error:%?]%f%b)%1(j.%F{#fde74c} [Jobs:%j]%f.)'
+
+# PS2
+PS2='[%_] > '
+

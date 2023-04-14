@@ -1,0 +1,18 @@
+### Fast way to source ZSH configuration file
+alias src="source $XDG_CONFIG_HOME/zsh/.zshrc && echo '.zshrc file sourced\n'"
+
+### Replace ls with exa
+alias ls="exa --icons --group-directories-first"
+alias la="exa --icons --all -l --group-directories-first"
+alias tree="ls --all --tree"
+
+### Navigation
+alias ..="cd ../"
+alias ..2="cd ../../"
+alias ..3="cd ../../../"
+alias ..4="cd ../../../../"
+alias ..5="cd ../../../../../"
+
+### Point xdg-open to an alias
+alias open="xdg-open"
+
